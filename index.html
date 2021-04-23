@@ -1,68 +1,11 @@
 <html>
-    <head>
-        <script type="text/javascript" src="js\processing.js"></script>
-    </head>
-
-    <body>
-
-        <h1>Sudoku Game made using Processing</h1>
-
-        <script type="text/processing">
-        
-        final int MAX_CLICKS = 3;
-float[] mouseCoordinates = new float[MAX_CLICKS*2];//Need 6 spaces total
-int numClicks = 0;
-
-void setup() {
-  size(500, 500);
-}
-
-void draw() {
-  
-  clean();
-
-  if (numClicks == 3) {
-    noFill();
-    stroke(0);
-    triangle(mouseCoordinates[0], mouseCoordinates[1], mouseCoordinates[2], mouseCoordinates[3], mouseCoordinates[4], mouseCoordinates[5]);
-    center_calc();
-  }
-}
-
-void mouseClicked() {
-
-  if (numClicks<3) {
-    mouseCoordinates[numClicks*2] = mouseX;
-    mouseCoordinates[(numClicks*2)+1] = mouseY;
-    numClicks++;
-  }
-}
-
-void center_calc() {
-
-  float[] center = new float[2];
-
-  float centerX = (mouseCoordinates[0] + mouseCoordinates[2] + mouseCoordinates[4])/3;
-  float centerY = (mouseCoordinates[1] + mouseCoordinates[3] + mouseCoordinates[5])/3;
-
-  textSize(20);
-  fill(0);
-  text("X", centerX - textWidth("X")/2, centerY);
-}
-
-void clean(){
-  
-  if(keyPressed){
-    background(200);
-    numClicks = 0;
-  }
-  
-}
-        
-        </script>
-
-        <canvas id="sketch" data-processing-sources="Sudoku.pde" style="border: 1px solid black;"></canvas>
-
-    </body>
-
+  <head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
+    <script src="/G4P5js/public_html/G4P5js.js"></script>
+    <script src="Sudoku.js"></script>
+  </head>
+  <body style="background-color:#99CCFF;text-align: center;padding-top:5%;">
+  <div id='settings'></div>
+  </body>
 </html>
