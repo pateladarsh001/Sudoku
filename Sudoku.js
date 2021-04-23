@@ -6,11 +6,11 @@ let grid;
 let providedNumbers;
 let userInput = ' ';
 function setup(){
-    gridX = new Array(GRID_LENGTH);
-    gridY = new Array(GRID_LENGTH);
-    grid = new Array(GRID_LENGTH * GRID_LENGTH);
-    providedNumbers = new Array(GRID_LENGTH * GRID_LENGTH);
-    createCanvas(720, 720);
+    gridX = processing2jsNewNumericArray(GRID_LENGTH);
+    gridY = processing2jsNewNumericArray(GRID_LENGTH);
+    grid = processing2jsNewNumericArray(GRID_LENGTH * GRID_LENGTH);
+    providedNumbers = processing2jsNewNumericArray(GRID_LENGTH * GRID_LENGTH);
+    createCanvas(900, 900);
     squareSize=width / GRID_LENGTH;
     fillRandomNumbers();
     drawGrid();
@@ -122,3 +122,11 @@ function mouseClicked(){
     }
 }
 
+
+function processing2jsNewNumericArray(x){
+    let arr = new Array(x);
+    for (var i = 0; i < x; i++) {
+       arr[i] = 0;
+    }
+    return arr;
+}
